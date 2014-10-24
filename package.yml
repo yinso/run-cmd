@@ -16,7 +16,7 @@ dependencies:
   yargs: =1.3.2
   coffee-script: =1.8.0
   underscore: =1.7.0
-  loglet: '>=0.1.0'
+  loglet: '>=0.1.1'
 devDependencies:
   testlet: '>= 0.2.0'
   coffee-bean: '>=0.3.0'
