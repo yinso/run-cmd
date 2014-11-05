@@ -2,7 +2,7 @@
 author: YC <yinso.chen@gmail.com>
 name: run-cmd
 description: A simple shell command builder and runner
-version: 0.1.0
+version: 0.1.1
 repository:
   type: git
   url: git://bitbucket.org/yinso/run-cmd.git

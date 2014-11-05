@@ -3,6 +3,7 @@ child = require 'child_process'
 _ = require 'underscore'
 {EventEmitter} = require 'events'
 loglet = require 'loglet'
+util = require './util'
 
 #child.exec 'ls -al', (err, stdout, stderr) ->
 #  console.log err
@@ -79,17 +80,6 @@ class CommandSpec
   spawn: (args) ->
     child.spawn @program, args
   exec: (args, cb) ->
-    child.exec @compile(args), cb
-  compile: (args) ->
-    escaped = 
-      for arg in args
-        @escape arg 
-    cmd = [ @program ].concat(escaped).join(' ')
-    loglet.debug 'cmd.compile', cmd
-    cmd
-  escape: (arg) ->
-    regex = /([^a-zA-Z0-9])/g
-    arg.replace regex, '\\$1'
-    
+    child.exec util.compile(@program, args), cb
 
 module.exports = CommandSpec

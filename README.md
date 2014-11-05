@@ -36,3 +36,18 @@
         ....
     });
 
+We can also build from an object structure without first creating the definition of the command itself - this is a single-use approach. 
+
+    var cmd = require('run-cmd);
+    cmd.object('ls', {a: true, l: true, _: [ '.', '..' ]}).exec(function(err, stdout, stderr) {
+      ...
+    });
+
+In such case, use `_` as the rest argument - passing an array for them. 
+
+You can also use a third option parameter to control the following: 
+
+* `flagStyle` - defaults to `--` for flags that are more than one character, and `-` for a single character flag. The way it does is to take the first character from `flagStyle` for the single character flag. 
+* `binaryFlag` - defaults to `true`, which will not append the value if it's `true` or `false`. i.e. `{a: true}` will transformed into `-a`
+* `skip` - an array of flags to be skipped for inclusion into the command parameter. By default `_` is included because it's parsed as the rest parameter.
+

@@ -24,7 +24,7 @@ describe 'command building test', () ->
           stderrStr = stderr.toString('utf8')
           if err
             done err
-          else if stdoutStr == '.\n..\ncmd.coffee\n'
+          else if stdoutStr == ".\n..\ncmd.coffee\nobject.coffee\n"
             done null
           else
             loglet.error 'test.cmd.output', err, JSON.stringify(stdoutStr), JSON.stringify(stderrStr)
@@ -41,7 +41,7 @@ describe 'command building test', () ->
           stderrStr = stderr.toString('utf8')
           if err
             done err
-          else if stdoutStr == '.\n..\ncmd.coffee\n'
+          else if stdoutStr == ".\n..\ncmd.coffee\nobject.coffee\n"
             done null
           else
             loglet.error 'test.cmd.output', err, JSON.stringify(stdoutStr), JSON.stringify(stderrStr)
