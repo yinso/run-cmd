@@ -6,6 +6,8 @@ loglet = require 'loglet'
 buildFlag = (flagStyle, flag) ->
   if flag.length == 1
     flagStyle[0] + flag
+  else if flag.indexOf(flagStyle[0]) == 0 # we explicitly pass in the flag.
+    flag
   else
     flagStyle + flag
 
@@ -36,8 +38,11 @@ class FromObject
   spawn: (args...) ->
     process.spawn @program, @parameters, args...
   exec: (args...) ->
-    cmd = util.compile @program, @parameters
+    cmd = @commandLine()
     process.exec cmd, args...
+  commandLine: () ->
+    util.compile @program, @parameters
+    
 
 fromObj = (args...) ->
   new FromObject args...
